@@ -1,66 +1,34 @@
 /*jslint node: true, nomen: true */
 "use strict";
 
-var Promise = require('bluebird'),
-    $ = require('jquery');
+var Promise = require('bluebird');
 
-function Action(options) {
-    this.collection = options.repositories.questions;
+function Action() { // add "options" parameters if needed
+    // TODO: Global Initialization
+    /*
+    example:
+    this.collection = options.repositories.mail;
+    */
 }
+Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
+    // Parameters:
 
-Action.prototype.run = function (parameters, solve) {
-
-    var self = this;
-
-    function failed() {
-        solve({
-            event: 'event-read-card-aborted',
-            data: {}
-        });
-    }
-
-    function success() {
-        self.collection.random().then(function (result) {
-            solve({
-                event: 'event-read-card-done-qr',
-                data: {
-                    'question': String(result.id),
-                }
-            });
-        });
-    }
-
-    QRScanner.prepare(function (err, status) {
-        if (err) {
-            Materialize.toast('Access to camera denied', 2000);
-            return failed();
+    // TODO: Execution
+    /*
+    example:
+    mail.find({subject: 'Re: ' + data.subject})
+        .then(solve);
+    */
+    // THIS CAN BE REMOVED (BEGIN)
+    Materialize.toast('read card', 2000)
+    solve({
+        event: 'event-read-card-done-qr', // done
+        // event: 'event-read-card-aborted', // aborted
+        data: {
+            'question': '0',
         }
-
-        var body = $(document.body);
-
-        function teardown() {
-            QRScanner.destroy();
-            document.removeEventListener("backbutton", back, false);
-            body.show();
-        }
-
-        function back() {
-            teardown();
-            failed();
-        }
-        document.addEventListener("backbutton", back, false);
-        body.hide();
-        QRScanner.show(function (status) {
-            QRScanner.scan(function (err, contents) {
-                teardown();
-                if (err) {
-                    Materialize.toast('Error scanning Card', 2000);
-                    return failed();
-                }
-                success();
-            });
-        });
     });
+    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {
