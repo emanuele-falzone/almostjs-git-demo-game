@@ -20,7 +20,7 @@ Action.prototype.run = function (parameters, solve) {
     }
 
     function success() {
-        self.collection.random().then(function (result) {
+        self.collection.random(localStorage.getItem("settings.language")).then(function (result) {
             solve({
                 event: 'event-read-card-done-qr',
                 data: {

@@ -76,6 +76,26 @@ c-view-container-home {
     border-color: white;
 }
 
+/* View Container Settings  */
+
+c-form-settings select {
+    display: block;
+}
+
+c-form-settings {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.save-settings-btn {
+  display: inline-grid;
+}
+
+.select-lang {
+  flex-grow: 1;
+}
+
 /* View Container Question */
 
 c-view-container-single-player, c-view-container-card {

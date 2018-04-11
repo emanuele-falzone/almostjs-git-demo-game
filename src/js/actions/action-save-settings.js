@@ -1,33 +1,21 @@
 /*jslint node: true, nomen: true */
 "use strict";
 
-var Promise = require('bluebird');
+var Promise = require('bluebird'),
+    i18nextko = require('i18next-ko');
 
-function Action() { // add "options" parameters if needed
-    // TODO: Global Initialization
-    /*
-    example:
-    this.collection = options.repositories.mail;
-    */
+function Action() {
+
 }
-Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
-    // Parameters:
-    // parameters['language']
 
-    // TODO: Execution
-    /*
-    example:
-    mail.find({subject: 'Re: ' + data.subject})
-        .then(solve);
-    */
-    // THIS CAN BE REMOVED (BEGIN)
-    Materialize.toast('save settings', 2000)
+Action.prototype.run = function (parameters, solve) {
+    localStorage.setItem("settings.language", parameters['language']);
+    i18nextko.setLanguage(parameters['language']);
     solve({
-        event: 'event-save-settings-done', // done
+        event: 'event-save-settings-done',
         data: {
         }
     });
-    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {

@@ -8,12 +8,11 @@ function Action(options) {
 }
 
 Action.prototype.run = function (parameters, solve) {
-
-    this.collection.random().then(function (result) {
+    this.collection.random(localStorage.getItem("settings.language")).then(function(result){
         solve({
             event: 'event-random-question-2-done',
             data: {
-                'question': String(result.id),
+                'question': String(result.id)
             }
         });
     });

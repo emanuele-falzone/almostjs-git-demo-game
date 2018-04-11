@@ -8,16 +8,18 @@
  <!-- /ko -->
 
 <div class="result-text">
-    <div class="available-actions">
-        <a class="waves-effect waves-light btn cyan col s12" data-bind="click: trigger.bind($data,'event-continue')">Continue</a>
-        <a class="waves-effect waves-light btn cyan col s12" data-bind="click: trigger.bind($data,'event-end')">Quit</a>
+    <div class="available-actions-qr">
+        <a class="waves-effect waves-light btn cyan col s12" data-bind="click: trigger.bind($data,'event-continue'), i18n: 'ev_continue'"></a>
+        <a class="waves-effect waves-light btn cyan col s12" data-bind="click: trigger.bind($data,'event-end'), i18n: 'ev_quit'"></a>
     </div>
     <div data-bind="if: item">
        <span data-bind="if: item()['correctness']" >
-           <span>Great! Your answer is<br>CORRECT!</span>
+           <span data-bind="i18n: 'ev_correct'" >
+           </span>
        </span>
        <span data-bind="ifnot: item()['correctness']" >
-           <span>Oh no! Your answer is<br>WRONG!</span>
+           <span data-bind="i18n: 'ev_wrong'" >
+           </span>
        </span>
     </div>
 </div>

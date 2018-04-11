@@ -29,6 +29,9 @@ gulp.task('vendor', function () {
         ]).pipe(gulp.dest('./www/js')),
         gulp.src('./node_modules/knockout/build/output/knockout-latest.js')
             .pipe(rename('knockout.min.js'))
+            .pipe(gulp.dest('./www/js')),
+        gulp.src('./node_modules/i18next-ko/lib/i18next-ko.bundle.js')
+            .pipe(rename('i18next-ko.min.js'))
             .pipe(gulp.dest('./www/js'))
     );
 });
@@ -43,7 +46,8 @@ gulp.task('js', function () {
                 'jquery': '$',
                 'knockout': 'ko',
                 'nedb': 'Nedb',
-                'bluebird': 'Promise'
+                'bluebird': 'Promise',
+                'i18next-ko' : 'i18nextko'
             }
         })
         .transform('stringify', {

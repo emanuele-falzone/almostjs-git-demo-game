@@ -39,10 +39,10 @@ Repository.prototype.find = function (fields, project) {
     });
 };
 
-Repository.prototype.random = function () {
+Repository.prototype.random = function (language) {
     var self = this;
     return self.db.then(function (collection) {
-        return collection.findAsync({});
+        return collection.findAsync({ language: language });
     }).then(function (results) {
         var random = Math.floor(Math.random() * results.length);
         return {id: results[random].id};

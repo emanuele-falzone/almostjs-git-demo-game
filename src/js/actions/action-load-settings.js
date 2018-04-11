@@ -3,31 +3,17 @@
 
 var Promise = require('bluebird');
 
-function Action() { // add "options" parameters if needed
-    // TODO: Global Initialization
-    /*
-    example:
-    this.collection = options.repositories.mail;
-    */
-}
-Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
-    // Parameters:
+function Action() {
 
-    // TODO: Execution
-    /*
-    example:
-    mail.find({subject: 'Re: ' + data.subject})
-        .then(solve);
-    */
-    // THIS CAN BE REMOVED (BEGIN)
-    Materialize.toast('load settings', 2000)
+}
+
+Action.prototype.run = function (parameters, solve) {
     solve({
-        event: 'event-load-settings-done', // done
+        event: 'event-load-settings-done',
         data: {
-            'language': '0',
+            'language': localStorage.getItem("settings.language")
         }
     });
-    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {
