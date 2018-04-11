@@ -78,7 +78,7 @@ c-view-container-home {
 
 /* View Container Question */
 
-c-view-container-card {
+c-view-container-single-player, c-view-container-card {
     display: block;
     height: 100%;
     background-image: url("../images/Logo_full.png");
@@ -87,7 +87,7 @@ c-view-container-card {
     background-position: top center;
 }
 
-c-details-question-qr {
+c-details-question, c-details-question-qr {
     background: linear-gradient(#588f3e, #588f3e);
     border-radius: 10px;
     border-style: solid;
@@ -100,7 +100,7 @@ c-details-question-qr {
     width: 100%;
 }
 
-c-details-question-qr > div {
+c-details-question > div, c-details-question-qr > div {
     padding: 5%;
     display: table-cell;
     vertical-align: middle;
@@ -108,12 +108,12 @@ c-details-question-qr > div {
     font-size: 4vw;
 }
 
-c-list-answers-qr {
+c-list-answers, c-list-answers-qr {
     display: block;
     height: 60%;
 }
 
-c-list-answers-qr > div {
+c-list-answers > div, c-list-answers-qr > div {
     margin-top: 2%;
     background: linear-gradient(#e2ecbb, #e2ecbb);
     border-radius: 10px;
@@ -130,11 +130,11 @@ c-list-answers-qr > div {
     border-color: white;
 }
 
-c-list-answers-qr > div:last-child {
+c-list-answers > div:last-child, c-list-answers-qr > div:last-child {
     margin-bottom: 5%;
 }
 
-c-list-answers-qr > div > div {
+c-list-answers > div > div, c-list-answers-qr > div > div {
     display: table-cell;
     vertical-align: middle;
     font-size: 4vw;
@@ -156,17 +156,17 @@ c-list-answers-qr > div > div {
 
 /* View Container Result */
 
-c-view-container-card-result-qr {
+c-view-container-single-player-result, c-view-container-card-result-qr {
     display: block;
     height: 100%;
 }
 
-c-details-result-qr {
+c-details-result, c-details-result-qr {
     margin-bottom: 20%;
     width: 100%;
 }
 
-c-details-result-qr > div {
+c-details-result > div, c-details-result-qr > div {
     display: block;
     vertical-align: middle;
     text-align: center;
@@ -209,11 +209,19 @@ c-details-result-qr > div {
     font-size: large;
 }
 
-.available-actions-qr {
+.available-actions, .available-actions-qr {
     display: flex;
     flex-direction: row;
     padding: 3%;
     justify-content: space-between;
+}
+
+.available-actions > a {
+    flex-basis: 48%;
+    height: initial;
+    line-height: initial;
+    padding: 5% 0;
+    background: linear-gradient(#668402, #76961B) !important;
 }
 
 .available-actions-qr > a {
