@@ -3,20 +3,31 @@
 
 var Promise = require('bluebird');
 
-function Action(options) {
-    this.collection = options.repositories.questions;
+function Action() { // add "options" parameters if needed
+    // TODO: Global Initialization
+    /*
+    example:
+    this.collection = options.repositories.mail;
+    */
 }
+Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
+    // Parameters:
 
-Action.prototype.run = function (parameters, solve) {
-
-    this.collection.random().then(function (result) {
-        solve({
-            event: 'event-random-question-1-done',
-            data: {
-                'question': String(result.id),
-            }
-        });
+    // TODO: Execution
+    /*
+    example:
+    mail.find({subject: 'Re: ' + data.subject})
+        .then(solve);
+    */
+    // THIS CAN BE REMOVED (BEGIN)
+    Materialize.toast('random question', 2000)
+    solve({
+        event: 'event-random-question-1-done', // done
+        data: {
+            'question': '0',
+        }
     });
+    // THIS CAN BE REMOVED (END)
 };
 
 exports.createAction = function (options) {

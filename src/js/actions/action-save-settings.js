@@ -12,6 +12,7 @@ function Action() { // add "options" parameters if needed
 }
 Action.prototype.run = function (parameters, solve) { // add "onCancel" parameters if needed
     // Parameters:
+    // parameters['language']
 
     // TODO: Execution
     /*
@@ -20,12 +21,10 @@ Action.prototype.run = function (parameters, solve) { // add "onCancel" paramete
         .then(solve);
     */
     // THIS CAN BE REMOVED (BEGIN)
-    Materialize.toast('read card', 2000)
+    Materialize.toast('save settings', 2000)
     solve({
-        event: 'event-read-card-done-qr', // done
-        // event: 'event-read-card-aborted', // aborted
+        event: 'event-save-settings-done', // done
         data: {
-            'question': '0',
         }
     });
     // THIS CAN BE REMOVED (END)

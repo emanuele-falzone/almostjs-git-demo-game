@@ -2,7 +2,6 @@
 "use strict";
 
 var ko = require('knockout'),
-    $ = require('jquery'),
     repositories = require('./repositories'),
     controls = require('./controls'),
     events = require('./events'),
@@ -12,8 +11,10 @@ var ko = require('knockout'),
 Promise.config({cancellation: true});
 
 controls.register();
+// TODO: register any custom control
 
 function ApplicationViewModel() {
+    // TODO: initialize global state
     var repos = repositories.createRepositories({});
     this.context = {
         repositories: repos,
@@ -27,30 +28,5 @@ function ApplicationViewModel() {
 var application = new ApplicationViewModel();
 
 ko.applyBindings(application);
-
-ko.bindingHandlers.clickDelay = {
-    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-
-        function delayed() {
-            return function () {
-                var self = this;
-                if (this.correctness === true) {
-                    $(element).addClass("correct");
-                } else {
-                    $(element).addClass("wrong");
-                }
-
-                navigator.vibrate(400);
-                $(document.body).addClass("disabled");
-
-                setTimeout(function () {
-                    $(document.body).removeClass("disabled");
-                    valueAccessor().apply(self, arguments);
-                }, 1000);
-            };
-        }
-        ko.bindingHandlers.click.init.call(this, element, delayed, allBindings, viewModel, bindingContext);
-    }
-};
 
 application.context.top.init();
